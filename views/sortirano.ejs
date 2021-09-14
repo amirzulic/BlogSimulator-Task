@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pocetna</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+<body id = "pozadina">
+
+<h1 style="text-align: center"> DRUŠTVENA MREŽA </h1>
+<hr>
+
+<% for(let i = 0; i < objava.length; i++) { %>
+    <div class="container">
+        <table class="table table-bordered table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Naziv autora</th>
+                <th scope="col">Datum</th>
+                <th scope="col">Vrijeme</th>
+                <th scope="col">Tekst objave</th>
+                <th scope="col">Lajkovi</th>
+                <th scope="col">Dislajkovi</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row"><%= objava[i].nazivautora %></th>
+                <td><%= objava[i].datum %></td>
+                <td><%= objava[i].vrijeme %></td>
+                <td><%= objava[i].tekst %></td>
+                <td><%= objava[i].brojLajkova %></td>
+                <td><%= objava[i].brojDislajkova %></td>
+                <td><button type="button" class="btn btn-success" onclick="like()">LIKE</button></td>
+                <td><button type="button" class="btn btn-danger" onclick="dislike()">DISLIKE</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<% } %>
+
+<script>
+    function like() {
+        $.ajax({
+            url: "/like",
+            data: {
+            },
+            type: 'post',
+            success: function( result ) {
+                console.log("like");
+            }
+        });
+    }
+
+    function dislike() {
+
+    }
+</script>
+
+</body>
+</html>
